@@ -1,14 +1,16 @@
 
 class requirements {
-  group { "puppet": ensure => "present", }
-  exec { "apt-update":
-    command => "/usr/bin/apt-get -y update"
+
+  file { '/etc/redis/hello.txt':
+     ensure => file,
+     source => "puppet:///modules/local_files/hello.txt",
   }
 
-  package {
-    ["redis-server", "git-core"]: 
-      ensure => installed,
+  file { '/etc/redis/wilson.txt':
+     ensure => file,
+     source => "puppet:///modules/local_files/wilson.txt",
   }
+
 }
 
 include requirements
