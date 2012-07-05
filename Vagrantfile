@@ -12,10 +12,9 @@ Vagrant::Config.run do |config|
   config.vm.forward_port 3000, 3000
 
   config.vm.provision :puppet do |puppet|
+    puppet.module_path = "puppet/modules"
     puppet.manifests_path = "puppet/manifests"
     puppet.manifest_file = "development.pp"
-    puppet.module_path = "puppet/modules"
-#    puppet.options = "--fileserverconfig=/Users/odewahn/Desktop/vtest/puppet/fileserver.conf"
   end
 
 end
